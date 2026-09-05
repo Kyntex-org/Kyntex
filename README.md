@@ -1,90 +1,73 @@
+<p align="center">
+  <img src="assets/logo/Kytex%20Logo.png" alt="Kyntex — Wearable Sensing Technology" width="760">
+</p>
+
 # Kyntex
 
-**Relative tendon stiffness tracking for athletes managing patellar tendon load, recovery, and return-to-sport progression.**
+Kyntex is a wearable-sensing platform for reliable training-session telemetry.
+The current prototype measures motion and band fit, streams versioned data over
+Bluetooth Low Energy, and preserves long sessions for later analysis.
 
-Kyntex is a wearable sensing system that estimates relative patellar tendon stiffness by applying a controlled mechanical stimulus and measuring how the tendon responds.
+## Current prototype
 
-## Problem
+| Layer | Implementation |
+| --- | --- |
+| Embedded platform | Seeed Studio XIAO nRF54L15 Sense |
+| Firmware | nRF Connect SDK and Zephyr RTOS |
+| Sensors | onboard six-axis IMU and external force-sensitive resistor |
+| Connectivity | versioned BLE telemetry with packet and sample integrity counters |
+| Applications | dependency-free web dashboard and native SwiftUI iOS app |
+| Session data | bounded summaries plus durable raw-sample recording and export |
 
-Athletes with patellar tendon pain often rely on subjective feedback such as pain, soreness, and feel when deciding whether to train, rest, or return to sport.
+The prototype currently supports motion telemetry, band-fit feedback, session
+state, steps, jumps, activity labels, and engineering training-load estimates.
+These values are intended for product development and personal trend review;
+they are not validated clinical measurements.
 
-There is currently no simple wearable tool that helps athletes track how their tendon stiffness changes over time.
+## System overview
 
-## Solution
+```mermaid
+flowchart LR
+    Sensors[IMU + fit sensor] --> Firmware[nRF54L15 firmware]
+    Firmware -->|BLE telemetry| Web[Web dashboard]
+    Firmware -->|BLE telemetry| IOS[iOS app]
+    Web --> Sessions[Durable session records]
+    IOS --> Sessions
+```
 
-Kyntex is designed to help athletes monitor relative tendon stiffness trends, including:
+## Engineering principles
 
-- baseline tendon stiffness
-- left/right tendon differences
-- pre-training vs post-training changes
-- weekly recovery trends
-- return-to-sport progression
+- Preserve compatibility through explicit protocol and release versions.
+- Make recording gaps visible instead of silently treating data as complete.
+- Keep live memory bounded during long sessions.
+- Prefer explainable algorithms until labeled validation data supports a
+  learned model.
+- Describe sensor-derived metrics conservatively and keep medical claims out of
+  the current product.
 
-## How It Works
+## Explore the project
 
-1. A controlled mechanical tap is applied near the patellar tendon.
-2. Synchronized accelerometers measure the tendon response.
-3. Embedded firmware captures timestamped sensor data.
-4. Signal processing estimates relative stiffness from wave-delay and response features.
-5. The user sees stiffness changes compared to their own baseline.
+- [Problem and design goals](docs/problem.md)
+- [Current solution](docs/solution.md)
+- [Technical architecture](docs/technology.md)
+- [Development roadmap](docs/roadmap.md)
+- [Hardware-free software demo](docs/demo.md)
+- [Public technical portfolio](https://github.com/Kyntex-org/Kyntex-Technical-Public)
 
-## Product Vision
+Production firmware and product-specific protocol details are developed in a
+private repository. Public repositories contain selected material appropriate
+for portfolio review and technical discussion.
 
-Kyntex is not intended to diagnose injury. The goal is to provide athletes and clinicians with a practical way to track tendon stiffness trends over time.
+## Development status
 
-Example outputs:
+Kyntex is an active engineering prototype. The nRF54 software stack is in
+production-readiness development; hardware validation, secure update design,
+per-device calibration, and broader field testing remain ongoing work.
 
-- "Your right tendon is 12% stiffer than your left."
-- "Your tendon stiffness is 8% lower than last week."
-- "Post-training stiffness increased compared to your morning baseline."
-
-## Current Status
-
-Kyntex is currently in prototype development.
-
-Current focus:
-
-- actuator and sensor selection
-- relative stiffness measurement pipeline
-- bench validation using variable-tension materials
-- wearable embedded firmware development
-- investor/resume-ready demo system
-
-## Technical Prototype
-
-The technical implementation is being developed separately.
-
-**Technical repo:**  
-`kyntex-tendon-stiffness-monitor`
-
-Planned technical stack:
-
-- Nordic nRF54L15
-- Zephyr RTOS
-- synchronized accelerometer sensing
-- ADS131M02 / ADS131M08 ADC
-- piezo/tapper mechanical excitation
-- BLE data streaming
-- Python signal-processing validation
-
-## Roadmap
-
-### Phase 1 — Bench Prototype
-
-Validate that the system can detect stiffness changes in elastic materials under different tension levels.
-
-### Phase 2 — Human Feasibility
-
-Measure relaxed vs contracted tendon states, left/right differences, and pre/post exercise changes.
-
-### Phase 3 — Wearable Prototype
-
-Package the system into a wearable patellar tendon device with BLE streaming and app/dashboard visualization.
-
-### Phase 4 — Validation
-
-Compare relative stiffness trends against reference methods or controlled test conditions.
+Longer-term research may investigate tendon-response sensing. That work remains
+a research direction and is not a capability of the current prototype.
 
 ## Disclaimer
 
-Kyntex is an early-stage prototype and is not a medical device. It is not intended to diagnose, treat, or predict injury.
+Kyntex is not a medical device and is not intended to diagnose, treat, prevent,
+or predict injury. See [LICENSE](LICENSE) for repository usage terms.

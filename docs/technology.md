@@ -29,6 +29,17 @@ probe. A production board should expose SWDIO, SWCLK, RESET, ground, and target
 voltage for a J-Link or pogo-pin fixture. Secure boot, signed updates, and
 device-specific calibration storage remain separate production milestones.
 
+## Custom hardware
+
+The fabricated V1 PCB uses a NINA-B302 module based on the Nordic nRF52
+architecture. Initial bring-up verified power and J-Link/SWD access. Sensor
+interfaces are still being debugged, so the board is documented as an active
+engineering prototype rather than a fully validated product revision.
+
+Public hardware material is organized in the
+[hardware portfolio](hardware/README.md), with a dedicated
+[Altium workspace](hardware/altium/README.md) for design-review artifacts.
+
 ## Data contract
 
 The current firmware emits BLE telemetry protocol V3. It adds boot, session,

@@ -9,6 +9,8 @@ research directions.
 - [Problem and design goals](problem.md)
 - [Current solution](solution.md)
 - [Technical architecture](technology.md)
+- [Hardware design and bring-up](hardware/README.md)
+- [Altium documentation workspace](hardware/altium/README.md)
 - [Development roadmap](roadmap.md)
 - [Hardware-free software demo](demo.md)
 

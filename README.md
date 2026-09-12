@@ -14,15 +14,28 @@ Bluetooth Low Energy, and preserves long sessions for later analysis.
 | --- | --- |
 | Embedded platform | Seeed Studio XIAO nRF54L15 Sense |
 | Firmware | nRF Connect SDK and Zephyr RTOS |
+| Custom hardware | Fabricated NINA-B302/nRF52 V1 PCB; power and SWD/J-Link verified |
 | Sensors | onboard six-axis IMU and external force-sensitive resistor |
 | Connectivity | versioned BLE telemetry with packet and sample integrity counters |
 | Applications | dependency-free web dashboard and native SwiftUI iOS app |
 | Session data | bounded summaries plus durable raw-sample recording and export |
+| Project role | Ben Harris — co-founder and technical lead |
 
 The prototype currently supports motion telemetry, band-fit feedback, session
 state, steps, jumps, activity labels, and engineering training-load estimates.
 These values are intended for product development and personal trend review;
 they are not validated clinical measurements.
+
+## Hardware development
+
+Kyntex hardware work spans prototype integration, custom schematic and PCB
+design, fabrication, and bench bring-up using KiCad and Altium Designer. The
+custom NINA-B302/nRF52 V1 board powers on and supports J-Link/SWD programming;
+several sensor interfaces remain under investigation and are not presented as
+fully validated.
+
+- [Hardware design and bring-up documentation](docs/hardware/README.md)
+- [Altium documentation workspace](docs/hardware/altium/README.md)
 
 ## System overview
 
@@ -50,6 +63,8 @@ flowchart LR
 - [Problem and design goals](docs/problem.md)
 - [Current solution](docs/solution.md)
 - [Technical architecture](docs/technology.md)
+- [Hardware design and bring-up](docs/hardware/README.md)
+- [Altium documentation workspace](docs/hardware/altium/README.md)
 - [Development roadmap](docs/roadmap.md)
 - [Hardware-free software demo](docs/demo.md)
 - [Public technical portfolio](https://github.com/Kyntex-org/Kyntex-Technical-Public)

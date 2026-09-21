@@ -1,8 +1,9 @@
 # Kyntex documentation
 
 Kyntex is a wearable-sensing prototype for motion, fit, and training-session
-telemetry. These documents distinguish the system that exists today from future
-research directions.
+telemetry, built around making captured data trustworthy rather than merely
+presentable. These documents deliberately distinguish the system that exists
+today from the work still ahead and from longer-term research directions.
 
 ## Documentation map
 

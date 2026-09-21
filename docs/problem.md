@@ -9,8 +9,10 @@ three harder engineering questions:
 3. Can a user review trends later without the application exhausting memory or
    losing the raw record?
 
-Kyntex addresses those questions through fit sensing, explicit data-integrity
-metadata, and durable session storage. Motion summaries are designed as
+Kyntex treats those three questions as the product, not as afterthoughts. Fit
+sensing gates capture on confirmed band contact, explicit integrity metadata
+makes any gap in the record visible, and durable session storage keeps the raw
+data intact without exhausting memory. Motion summaries are designed as
 engineering feedback, not as diagnoses or predictions about injury.
 
 ## Design goals

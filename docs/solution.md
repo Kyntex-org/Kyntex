@@ -1,7 +1,7 @@
 # Current solution
 
 Kyntex combines an embedded sensor platform with native and browser-based
-companion applications.
+companion applications, joined by one explicitly versioned data contract.
 
 ## On the device
 

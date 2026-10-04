@@ -35,6 +35,23 @@ state, steps, jumps, activity labels, and engineering training-load estimates.
 These values are intended for product development and personal trend review;
 they are not validated clinical measurements.
 
+## Software status — October 3, 2026
+
+The launch-readiness changes are integrated: durable workout save/recovery and
+deletion fixes, safer firmware-update coordination, accessibility improvements,
+sample-mode isolation, bundled third-party notices, and clearer privacy
+disclosures. Current companion applications support nRF54 telemetry V3–V5.
+Arduino/nRF52840 telemetry support has been retired; historical engineering
+material remains archived.
+
+The app remains local-first and does not require a Kyntex account. Cloud sync,
+account sign-in, subscriptions, and a final sales model are not shipping
+capabilities or announced commitments.
+
+This is a development milestone, not an App Store release or a declaration that
+all launch requirements are complete. See the [current roadmap](docs/roadmap.md)
+and [validation summary](https://github.com/Kyntex-org/Kyntex-Technical-Public/blob/main/docs/validation-status.md).
+
 ## Hardware development
 
 Hardware work on Kyntex spans prototype integration, custom schematic and PCB
@@ -103,8 +120,9 @@ for portfolio review and technical discussion.
 Kyntex is an active engineering prototype on a deliberate path toward a real
 product. The software stack works end to end today; the remaining gap to
 production is honestly scoped rather than glossed over. Hardware validation,
-signed firmware updates and authenticated device access, per-device calibration
-storage, and multi-subject metric validation are all tracked as open work in the
+production signing and physical update/rollback checks, authenticated device
+access, per-device calibration validation, and multi-subject metric validation
+are all tracked as open work in the
 [roadmap](docs/roadmap.md).
 
 The longer-term research bet is tendon-response sensing — using the band to say

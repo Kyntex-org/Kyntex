@@ -26,8 +26,10 @@ flowchart TD
 
 Development flashing currently uses the module's USB-C-connected CMSIS-DAP
 probe. A production board should expose SWDIO, SWCLK, RESET, ground, and target
-voltage for a J-Link or pogo-pin fixture. Secure boot, signed updates, and
-device-specific calibration storage remain separate production milestones.
+voltage for a J-Link or pogo-pin fixture. MCUboot signing and the coordinated
+Bluetooth update implementation have been built and tested during development.
+Production signing, authenticated device enrollment, physical rollback testing,
+and device-specific calibration validation remain release requirements.
 
 ## Custom hardware
 
@@ -42,9 +44,12 @@ Public hardware material is organized in the
 
 ## Data contract
 
-The current firmware emits BLE telemetry protocol V3. It adds boot, session,
-packet, sample, and dropped-sample counters to make discontinuities observable.
-The companion applications retain V2 support for the legacy Arduino firmware.
+Current nRF54 companion applications accept telemetry V3, V4, and V5, with
+version-specific integrity and load information. Boot, session, packet, sample,
+and dropped-sample counters make discontinuities observable where the version
+provides them. Arduino/nRF52840 V2 telemetry is rejected. Historical recordings
+and saved-data migrations are retained; retiring device support does not erase
+existing user history.
 
 Product-specific packet layouts, pin assignments, and calibration values are
 kept in the private engineering repository.

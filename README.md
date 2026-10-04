@@ -1,4 +1,8 @@
-<h1 align="center">Kyntex</h1>
+<p align="center">
+  <img src="assets/logo/Kyntex%20Logo.png" alt="Kyntex — Wearable Sensing Technology" width="760">
+</p>
+
+# Kyntex
 
 Kyntex is a wearable-sensing platform built around a single idea: training
 telemetry you can actually trust. Most wearables render attractive live charts

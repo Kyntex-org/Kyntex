@@ -1,43 +1,56 @@
 # Development roadmap
 
-This roadmap separates completed foundations from work that still requires
-hardware or validation data.
+Updated October 3, 2026. Completed engineering work is distinct from public
+release approval, physical-device evidence, and future product plans.
 
-## Completed foundation
+## Integrated software foundation
 
-- legacy nRF52840/Arduino prototype retained for compatibility
-- nRF54L15/nRF Connect SDK application port
-- versioned V3 telemetry with session-integrity metadata
-- dual V2/V3 decoding in the web and iOS clients
-- bounded long-session storage and data export
-- automated protocol, state-management, and workout-engine test targets
+- nRF54L15/nRF Connect SDK firmware and V3–V5 companion telemetry support
+- Arduino/nRF52840 firmware archived and V2 telemetry paths retired
+- workout save/recovery and deletion fixes, with defect-specific regression proofs
+- bounded firmware-download buffering and coordinated update/retry handling
+- boot-health confirmation safeguards and signed-image development builds
+- accessible navigation, Reduce Motion support, and isolated sample walkthroughs
+- bundled license notices and revised in-app privacy/storage disclosures
+- iOS, dashboard, contract, and firmware regression/build workflows
 
-## Active production-readiness work
+The owner's Mac validation report records 42 package tests, 119 app tests,
+four UI tests, unsigned Release builds, and both fail-before/pass-after proofs.
+Coordinator validation also passed 30 firmware host cases with Linux sanitizers,
+45 shared contract vectors, a real nRF54 development build, and 43 QEMU cases.
+These are local development results; they do not establish physical reliability
+or clinical accuracy. GitHub Actions execution is currently billing-blocked.
 
-- bench validation on the XIAO nRF54L15 Sense hardware
-- FSR and battery calibration on the intended mechanical assembly
-- recovery testing for disconnects, resets, and interrupted sessions
-- production PCB planning with accessible SWD programming pads
+## Before public launch
 
-## Next engineering milestones
+- finish authenticated device access and enrollment policy/implementation
+- resolve the boot policy for sensors that never recover
+- validate fit, battery calibration, power behavior, update/rollback, and
+  delete/relaunch behavior on physical bands
+- finish Apple team/signing, supported-device scope, support ownership, and
+  privacy/export declarations; inspect the final distribution archive
+- complete production signing and owner-approved beta/store submission
 
-- signed boot and firmware-update design with protected production keys
-- encrypted and authenticated device access
-- versioned nonvolatile calibration storage
-- production LED/PWM and power profiling
-- automated hardware-in-the-loop regression testing
-- explicit data-retention controls in companion applications
+## Product development
 
-## Data and algorithm milestones
+- prioritize the changes needed for the first useful customer experience
+- test revised flows and firmware behavior before public distribution
+- evaluate hardware sales and optional recurring services against customer
+  demand and actual support/manufacturing costs
+- add accounts only when features such as cloud sync or coach sharing need them
 
+There is no announced subscription requirement, account requirement, price, or
+release date. The current companion app stores data locally without sign-in.
+
+## Hardware and algorithm work
+
+- continue XIAO assembly validation and custom PCB bring-up with accessible SWD
+- add hardware-in-the-loop regression testing and power profiling
 - define a labeled recording protocol and data dictionary
-- collect sessions across multiple users and device placements
-- establish subject-separated training, validation, and test splits
-- compare learned models against the current threshold baseline
-- reject models that do not improve accuracy, robustness, and interpretability
+- collect across users and placements; use subject-separated validation
+- compare learned models against the explainable threshold baseline
 
 ## Research track
 
-Tendon-response or relative-stiffness sensing would require dedicated
-excitation/sensing hardware and controlled validation. It remains exploratory
-and must not be presented as a current Kyntex capability.
+Tendon-response or relative-stiffness sensing would require dedicated hardware
+and controlled validation. It remains exploratory, not a current capability.
